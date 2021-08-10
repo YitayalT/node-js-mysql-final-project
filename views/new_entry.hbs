@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style.css">
+ <title>sleep tracker</title>
+</head>
+<body>
+  <nav>
+    <img src="/hero.jpg" class="avatar" alt="user profile picture" style="width: 100px; height: 100px; border-radius: 50%;"/>
+   <h5>Sleep Tracking</h5>
+    <ul>
+      <li><a href="/">Home</a></li>
+      {{#if user }}
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/auth/logout">Logout</a></li>
+      {{else}}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      {{/if}}
+    </ul>
+  </nav>
+
+  <div class="container mt-4" style="height: 400px; width: 400px; margin: auto;">
+    <div class="card">
+      <div class="card-header text-center">
+      Enter sleep and wake up time
+      </div>
+      <div class="card-body">
+        <form action="/auth/new_entry" method="POST">
+         
+         <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" class="form-control" id="date" name="date">
+          </div>
+
+          <div class="form-group">
+            <label for="sleep_time">Sleep Time</label>
+            <input type="datetime-local" class="form-control" id="sleep_time" name="sleep_time">
+          </div>
+
+           <div class="form-group">
+            <label for="wake_up_time">wake up Time</label>
+            <input type="datetime" class="form-control" id="wake_up_time" name="wake_up_time">
+          </div>
+          <div class="form-group">
+            <label for="total_time">total sleep time</label>
+            <input type="datetime" class="form-control" id="total_time" name="total_time">
+          </div>
+          
+          <button type="submit" class="btn btn-primary text-center" style="margin: auto;">Enter</button>
+        </form>
+      </div>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+</body>
+</html>
