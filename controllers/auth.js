@@ -135,30 +135,19 @@ exports.logout = async (req, res) => {
   res.status(200).redirect('/login');
 }
 
-exports.enter =  (req, res) => {
+exports.new_entry =  (req, res) => {
   
   console.log(req.body);
 
-  const {email, date, sleep_time, wake_up_time } = req.body;
-
-  db.query('SELECT email FROM user_data WHERE email = ?', [email], async (error, results) => {
+  const {email, date, sleep_time, wake_up_time, total_time } = req.body;
+  // const sleep_hour = wake_up_time - sleep_time
+  db.query('INSERT INTO user_data SET ?', { email: email, date: date, sleep_time: sleep_time, wake_up_time: wake_up_time, total_time: total_time }, (error, results) => {
     if(error) {
       console.log(error);
-    }
-
-    if( results.length > 0 ) {
-      let totalSleep = wake_up_time - sleep_time;
-      db.query('INSERT INTO user SET ?', {email: email,date:date, sleep_time: sleep_time, wake_up_time: wake_up_time, totalSleep: totalSleep }, (error, results) => {
-        if(error) {
-          console.log(error);
-        } else {
-          console.log(results);
-          res.status(200).redirect('/profile');
-        }
-      });
     } else {
+      console.log(results);
       return res.render('new_entry', {
-        message: 'please enter the data'
+        message: 'data entered'
       });
     }
   });

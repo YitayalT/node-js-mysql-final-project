@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
 <title>sleep tracker</title>
 </head>
 <body>
@@ -39,15 +40,10 @@
            <b> Welcome, {{user.name}}</b>
           </div>
           <div class="card-body text-info">
-            <h5 class="card-title">Hey {{user.name}} welcome back</h5>
-            <p class="card-text">This is the profile page where you can add view all the information about yourself</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat ex voluptas tempore neque quam officiis quos, vero corrupti reprehenderit eius fugit perferendis excepturi libero possimus expedita distinctio necessitatibus hic sed.</p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam illo tempore consectetur iure eaque sed dolor, sunt optio ducimus totam distinctio laborum aperiam voluptatum aliquam, mollitia nam. Nostrum, nemo magni!
-
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae cumque voluptatem maxime pariatur quisquam delectus quae ex itaque modi ipsam? Provident rerum veritatis ad recusandae eveniet aliquid accusamus quisquam repellat?
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe eveniet reprehenderit quisquam repellat minima animi soluta deleniti dolorum possimus modi hic accusamus porro, facilis laborum accusantium debitis laboriosam reiciendis voluptatibus.
-            </p>
+            <h5 class="card-title">sleep hour vs date</h5>
+              <div class="chart">
+                <canvas id="myChart"> </canvas>
+              </div>
             <a href="/new_entry" class="btn btn-primary">New Entry</a>
           </div>
           <div class="card-footer text-muted">
@@ -59,7 +55,50 @@
     
 
   </div>
-
+  <script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+    let massPopulation = new Chart(myChart, {
+        type: 'bar',
+        data: {
+          labels: ['8/7/2021', '8/8/2021', '8/9/2021', '8/10/2021','8/11/2021','8/12/2021'],
+          datasets: [{
+            label: 'sleep hour',
+            data: [8, 7, 5, 9, 6, 8],
+            //backgroundColor: 'green',
+            backgroundColor: [
+                         'rgba(255, 99, 132, 0.2)',
+                         'rgba(255, 159, 64, 0.2)',
+                         'rgba(255, 205, 86, 0.2)',
+                         'rgba(75, 192, 192, 0.2)',
+                         'rgba(54, 162, 235, 0.2)',
+                         'rgba(153, 102, 255, 0.2)',
+                         'rgba(201, 203, 207, 0.2)'
+             ],
+              borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1,
+    hoverBorderWidth: 2,
+    hoverBorderColor: '#000',
+          }]
+        },
+        Option:{
+          title: {
+            display: true,
+            text: 'sleeping hours'
+          },
+          legend: {
+            position: 'right',
+          }
+        }
+    });
+  </script>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </body>
 </html>

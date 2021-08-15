@@ -38,26 +38,29 @@
 
           <div class="form-group">
             <label for="date">Date</label>
-            <input type="date" class="form-control" id="date" name="date">
+            <input type="text" class="form-control" id="date" name="date">
           </div>
 
           <div class="form-group">
             <label for="sleep_time">Sleep Time</label>
-            <input type="datetime-local" class="form-control" id="sleep_time" name="sleep_time">
+            <input type="text" class="form-control" id="sleep_time" name="sleep_time">
           </div>
 
            <div class="form-group">
             <label for="wake_up_time">wake up Time</label>
-            <input type="datetime" class="form-control" id="wake_up_time" name="wake_up_time">
+            <input type="text" class="form-control" id="wake_up_time" name="wake_up_time">
           </div>
           <div class="form-group">
             <label for="total_time">total sleep time</label>
-            <input type="datetime" class="form-control" id="total_time" name="total_time">
+            <input type="text" class="form-control" id="total_time" name="total_time">
           </div>
           
           <button type="submit" class="btn btn-primary text-center" style="margin: auto;">Enter</button>
         </form>
       </div>
+       {{#if message }}
+      <h4 class="alert alert-danger mt-4">{{message}}</h4>
+    {{/if}}
     </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
